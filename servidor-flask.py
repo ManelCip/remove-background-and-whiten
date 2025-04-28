@@ -1,4 +1,5 @@
 from flask import Flask, request, send_file
+from flask_cors import CORS
 import cv2
 import numpy as np
 from PIL import Image
@@ -6,6 +7,7 @@ import io
 import os
 
 app = Flask(__name__)
+CORS(app)  # <--- Habilitar CORS
 
 def remove_background_and_whiten(image_path, sensitivity=30):
     image = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
